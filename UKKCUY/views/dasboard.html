@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #fdfdfd;
+            color: #000000;
+        }
+        header {
+            background-color: #0080ff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        header h2 {
+            margin: 0;
+            font-size: 2rem;
+            color: #f8f8f8;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px;
+        }
+        nav a {
+            text-decoration: none;
+            font-size: 1.2rem;
+            color: #fff;
+            background: #0080ff;
+            padding: 10px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        nav a:hover {
+            background: #0080ff;
+            transform: scale(1.1);
+        }
+        section {
+            margin: 20px auto;
+            max-width: 800px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        section h3 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .book {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #fff;
+            color: #333;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .book:hover {
+            background: #f0f0f0;
+        }
+        .book img {
+            width: 50px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #2c2c54;
+            color: #f8f8f8;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        }
+        footer a {
+            color: #2ebf91;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2>Selamat datang di Dashboard Perpustakaan Digital</h2>
+    </header>
+    <nav>
+        <?php if ($role === 'admin') : ?>
+            <a href="http://localhost/UKKCUY/views/kelolabuku.html">Pendataan Buku</a>
+        <?php elseif ($role === 'petugas') : ?>
+            <a href="http://localhost/UKKCUY/views/kelolabuku.html">Pendataan Barang</a>
+        <?php elseif ($role === 'user') : ?>
+            <a href="#">Lihat Semua Buku</a>
+            <a href="#">Tambahkan Petugas</a>
+            <a href="#">Buat Laporan</a>
+        <?php endif; ?>
+    </nav>
+    <section>
+        <h3>Buku Populer</h3>
+        <div class="book">
+            <img src="#" alt="Buku 1">
+            <span>Judul Buku 1</span>
+            <span>Penulis 1</span>
+            <span>Tahun Terbit</span>
+        </div>
+        <div class="book">
+            <img src="#" alt="Buku 2">
+            <span>Judul Buku 2</span>
+            <span>Penulis 2</span>
+            <span>Tahun Terbit</span>
+        </div>
+        <div class="book">
+            <img src="#" alt="Buku 3">
+            <span>Judul Buku 3</span>
+            <span>Penulis 3</span>
+            <span>Tahun Terbit</span>
+        </div>
+        <div class="book">
+            <img src="#" alt="Buku 4">
+            <span>Judul Buku 4</span>
+            <span>Penulis 4</span>
+            <span>Tahun Terbit</span>
+        </div>
+        <div class="book">
+            <img src="#" alt="Buku 5">
+            <span>Judul Buku 5</span>
+            <span>Penulis 5</span>
+            <span>Tahun Terbit</span>
+        </div>
+    </section>
+    <footer>
+        <a href="http://localhost/UKKCUY/backend/logout.php">Logout</a>
+    </footer>
+</body>
+</html>

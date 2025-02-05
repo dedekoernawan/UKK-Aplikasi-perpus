@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard Perpustakaan</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .info-peminjam {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .daftar-pinjaman {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Data Pinjaman Anda</h1>
+
+        <div class="info-peminjam">
+            <h2>Informasi Peminjam</h2>
+            <p><strong>Nama:</strong> <?php echo $data_peminjam['nama_peminjam']; ?></p> <p><strong>Username:</strong> <?php echo $data_peminjam['username']; ?></p>
+            </div>
+
+        <div class="daftar-pinjaman">
+            <h2>Daftar Pinjaman</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Judul Buku</th>
+                        <th>Tanggal Pinjam</th>
+                        <th>Tanggal Kembali</th>
+                        </tr>
+                </thead>
+                <tbody>
+                    <?php while ($data_buku = mysqli_fetch_assoc($result_buku)) { ?>
+                        <tr>
+                            <td><?php echo $data_buku['judul_buku']; ?></td> <td><?php echo $data_buku['tanggal_pinjam']; ?></td>
+                            <td><?php echo $data_buku['tanggal_kembali']; ?></td>
+                            </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

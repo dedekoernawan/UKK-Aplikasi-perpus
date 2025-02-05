@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Buku</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input, button {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kelola Buku</h1>
+
+    <form method="POST">
+        <h2>Tambah Buku</h2>
+        <label for="title">Judul Buku:</label><br>
+        <input type="text" name="title" id="title" required><br>
+
+        <label for="author">Pengarang:</label><br>
+        <input type="text" name="author" id="author" required><br>
+
+        <input type="hidden" name="action" value="add">
+        <button type="submit">Tambah Buku</button>
+    </form>
+
+    <h2>Daftar Buku</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Judul</th>
+                <th>Pengarang</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($books as $book): ?>
+                <tr>
+                    <td><?= htmlspecialchars($book['id']) ?></td>
+                    <td><?= htmlspecialchars($book['title']) ?></td>
+                    <td><?= htmlspecialchars($book['author']) ?></td>
+                    <td>
+                        <!-- Edit Form -->
+                        <form method="POST" style="display:inline;">
+                            <input type="hidden" name="id" value="<?= $book['id'] ?>">
+                            <input type="text" name="title" placeholder="Judul Baru" required>
+                            <input type="text" name="author" placeholder="Pengarang Baru" required>
+                            <input type="hidden" name="action" value="edit">
+                            <button type="submit">Edit</button>
+                        </form>
+
+                        <form method="POST" style="display:inline;">
+                            <input type="hidden" name="id" value="<?= $book['id'] ?>">
+                            <input type="hidden" name="action" value="delete">
+                            <button type="submit">Hapus</button>
+                        </form>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</body>
+</html>
